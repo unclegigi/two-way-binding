@@ -1,0 +1,69 @@
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div style="margin-left: 25px;">
+        Read more about it in the <a href="https://github.com/gwendall/way.js" target="_blank">Github repo</a>
+      </div>
+      <div class="col-sm-6">
+        <h4>way form</h4>
+        <form role="form" class="form-horizontal" way-data="formData" way-persistent="true">
+          <div class="form-group">
+            <label class="col-sm-3">Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="name" placeholder="Name" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3">Picture</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="picture" placeholder="Enter an image's URL" autocomplete="off">
+              <img class="img-responsive" way-data="formData.picture" way-default="http://creditworksusa.com/wp-content/uploads/2014/03/facebook-default-profile-photo.jpg">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3">Nationality</label>
+            <div class="col-sm-9 checkbox">
+              <label>
+                <input type="checkbox" name="nationality[]" value="french">French<br/>
+              </label>
+              <label>
+                <input type="checkbox" name="nationality[]" value="american">American<br/>
+              </label>
+              <label>
+                <input type="checkbox" name="nationality[]" value="british">British<br/>
+              </label>
+              <label>
+                <input type="checkbox" name="nationality[]" value="chinese">Chinese<br/>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3">Skills</label>
+            <div class="col-sm-9">
+              <a href="#" way-action-push="formData.skills">Add a skill</a>
+            </div>
+          </div>
+          <div class="form-group" way-repeat="formData.skills" style="padding: 0px;">
+            <label class="col-sm-3"></label>
+            <div class="col-sm-9">
+              <div class="item-entry">
+                <input type="text" class="form-control"
+                placeholder="Enter a skill" way-data="title" way-persistent="true">
+              </div>
+              <a href="#" way-action-remove="formData.skills.$$key" way-persistent="true">Remove</a>
+
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-sm-6">
+        <h4>way data</h4>
+        <pre way-data="__all__" way-json="true" way-default="{}"></pre>
+        <button class="btn btn-danger" way-clear way-persistent="true">Clear data</button>
+      </div>
+
+    </body>
